@@ -37,10 +37,8 @@ class BudgetinApp(QMainWindow):
             }
         """)
 
-        # Inisialisasi data
         self.totalBelanja = 0
 
-        # Event handler
         self.tombolTambahBarang.clicked.connect(self.tambahBarang)
         self.tombolReset.clicked.connect(self.resetData)
         self.tombolSimpan.clicked.connect(self.simpanData)
@@ -76,7 +74,6 @@ class BudgetinApp(QMainWindow):
 
         self.totalBelanja += subtotal
 
-        # Tambah ke tabel
         row = self.tableWidget.rowCount()
         self.tableWidget.insertRow(row)
         self.tableWidget.setItem(row, 0, QTableWidgetItem(nama))
@@ -85,11 +82,9 @@ class BudgetinApp(QMainWindow):
         self.tableWidget.setItem(row, 3, QTableWidgetItem(str(subtotal)))
         self.tableWidget.setItem(row, 4, QTableWidgetItem(kategori))
 
-        # Update total & sisa
         self.LabelTotal.setText(str(self.totalBelanja))
         self.hitungSisa()
 
-        # Reset input
         self.NamaBarangLineEdit.clear()
         self.HargaLineEdit.clear()
         self.spinBoxJumlah.setValue(1)
